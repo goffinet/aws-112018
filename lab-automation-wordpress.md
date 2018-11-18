@@ -398,7 +398,7 @@ tar xvfz latest.tar.gz -C /var/www/html/
 
 ### 1.8. Création de la base de données de Wordpress
 
-La procédure consiste à se connecter à la base de donnée en tant qu'utilisateur "root" de la base de données et à encoder les commandes suivantes qui créent un utilisateur avec un mot de passe à modifier ("testadmin208"), qui créent une base de données et qui lient l'utilisateur à la base de donnée.
+La procédure consiste à se connecter à la base de données en tant qu'utilisateur "root" de la base de données et à encoder les commandes suivantes qui créent un utilisateur avec un mot de passe à modifier ("testadmin208"), qui créent une base de données et qui lient l'utilisateur à la base de donnée.
 
 ```bash
 mysql -u root -p
@@ -490,7 +490,7 @@ firewall-cmd --reload
 
 ### 2.2. Création de la base de donnée
 
-La base de donnée Wordpress est créée et configurée après avoir sécurisé le service.
+La base de données Wordpress est créée et configurée après avoir sécurisé le service.
 
 ```bash
 # See https://stackoverflow.com/questions/24270733/automate-mysql-secure-installation-with-echo-command-via-a-shell-script
@@ -730,7 +730,7 @@ wp config create --dbname=wp_database \
 
 ### 4.4. Créer la base de données Wordpress
 
-La base de donnée a été créée dans une étape précédente. Ici, pour documentation avec wp-cli.
+La base de données a été créée dans une étape précédente. Ici, pour documentation avec wp-cli.
 
 [wp db create](https://developer.wordpress.org/cli/commands/db/create/)
 
