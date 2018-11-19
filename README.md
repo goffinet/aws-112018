@@ -1,6 +1,8 @@
 # AWS 11-2018
 
-Notes de formation
+**Notes de formation**
+
+<!-- toc -->
 
 ## Environnement
 
@@ -90,6 +92,7 @@ Notes de formation
 
 ## Administration Linux : 2e partie
 
+* [Lab Automation LAMP Wordpress](lab-automation-wordpress.md)
 
 ## Docker
 
