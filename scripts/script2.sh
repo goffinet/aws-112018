@@ -25,7 +25,7 @@ echo "<?php phpinfo(); ?>" > /var/www/html/info.php
 if [ $(curl -s -G http://127.0.0.1/info.php | grep -q 'phpinfo' ; echo $?) == '0' ] ; then
 echo "PHP is working" ; else
 echo "PHP is NOT working" ; fi
-rm -y /var/www/html/info.php
+rm -f /var/www/html/info.php
 # 5. Wordpress
 wget http://wordpress.org/latest.tar.gz
 tar xvfz latest.tar.gz -C /var/www/html/
