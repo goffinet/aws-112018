@@ -22,7 +22,7 @@ Vous démarrez donc en [Fedora 27](https://fr.wikipedia.org/wiki/Fedora_(GNU/Lin
 
 ### 1.1. Méthodologie et consigne
 
-Exécutez chaque commande opérationnelle. Copier les actions qui s'exécutent avec succès dans fichier destiné à devenir un script d'automatisation Bash.
+Exécutez chaque commande opérationnelle. Copiez les actions qui s'exécutent avec succès dans fichier destiné à devenir un script d'automatisation Bash.
 
 Veuillez également exécuter les commandes de diagnostic, évaluer celles qui conviennent le mieux à des tests et les retenir dans votre fichier de travail.
 
