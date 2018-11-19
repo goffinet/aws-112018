@@ -57,7 +57,7 @@ tail /var/log/httpd/error_log
 httpd -V
 ```
 
-on peut demander à curl de rendre un résultat sur le serveur Web. En effet, le dossier par défaut des pages à servir est `/var/www/html`. En l'absence d'un fichier d'index par défaut, une page "noindex" est servie de l'emplacement `/usr/share/httpd/`.
+on peut demander à curl de rendre un résultat sur le serveur Web. En effet, le dossier par défaut des pages à servir est `/var/www/html`. En l'absence d'un fichier d'index par défaut, une page "noindex" est servie à partir de l'emplacement `/usr/share/httpd/`.
 
 #### GET HTTP
 
