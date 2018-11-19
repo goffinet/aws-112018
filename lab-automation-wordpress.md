@@ -161,7 +161,7 @@ IncludeOptional conf.d/*.conf
 
 On s'intéressera au concept [d'hôte virtuel](https://linux.goffinet.org/31_services_apache_http_server/#7-serveurs-virtuels-par-nom).
 
-### 1.4. Base de donnée
+### 1.4. Base de données
 
 #### Tests
 
