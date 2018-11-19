@@ -272,6 +272,10 @@ echo "<?php phpinfo(); ?>" >> info.php
 curl http://127.0.0.1/info.php
 ```
 
+Examen de la page `info.php`.
+
+![info.php](/images/phpinfo-fedora27-lamp.jpg)
+
 ### 1.6. Problématiques rencontrées
 
 [Dépot Remi](https://blog.remirepo.net/pages/Presentation) : https://blog.remirepo.net/pages/Config
