@@ -24,7 +24,7 @@ Vous démarrez donc en [Fedora 27](https://fr.wikipedia.org/wiki/Fedora_(GNU/Lin
 
 Exécutez chaque commande opérationnelle. Copier les actions qui s'exécutent avec succès dans fichier destiné à devenir un script d'automatisation Bash.
 
-Veuillez également exécuter les commandes de diagnostic, évaluer celles qui conviennent le mieux à des test et les retenir dans votre fichier de travail.
+Veuillez également exécuter les commandes de diagnostic, évaluer celles qui conviennent le mieux à des tests et les retenir dans votre fichier de travail.
 
 ### 1.2. Apache
 
@@ -892,6 +892,94 @@ Inspiré de [Ansible playbooks to install Wordpress in a HA configuration on IBM
 ## 8. Déploiement sur Docker
 
 Stack LAMP/Wordpres sur Docker.
+
+[Docker pour ma stack LAMP](https://blog.kulakowski.fr/post/docker-pour-ma-stack-lamp)
+
+![Schéma d’architecture simplifié de la stack LAMP sous Docker](https://blog.kulakowski.fr/wp-content/uploads/2018/04/architecture_docker_light.png)
+
+![Schéma d’architecture complet de la stack LAMP sous Docker](https://blog.kulakowski.fr/wp-content/uploads/2018/04/architecture_docker-768x724.png)
+
+Architecture Docker Compose
+
+```yaml
+version: '2.1'
+
+################################################################### All services
+services:
+  httpd:
+    container_name: httpd
+    image: llaumgui/httpd24
+    build:
+      context: build/httpd/2.4/
+    restart: always
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - /docker/volumes/www:/var/www/
+     - /docker/conf/httpd/vhost.d:/usr/local/apache2/conf/vhost.d:ro
+     - /docker/conf/httpd/ssl:/usr/local/apache2/ssl:ro
+    ports:
+     - "80:80"
+     - "443:443"
+
+  php:
+    container_name: php
+    image: llaumgui/php:7.2-fpm
+    build:
+      context: build/php-fpm/7.2/
+      args:
+        DOCKER_PHP_ENABLE_APCU: 'on'
+        DOCKER_PHP_ENABLE_COMPOSER: 'on'
+        DOCKER_PHP_ENABLE_LDAP: 'off'
+        DOCKER_PHP_ENABLE_MEMCACHED: 'off'
+        DOCKER_PHP_ENABLE_MONGODB: 'off'
+        DOCKER_PHP_ENABLE_MYSQL: 'on'
+        DOCKER_PHP_ENABLE_POSTGRESQL: 'off'
+        DOCKER_PHP_ENABLE_REDIS: 'on'
+        DOCKER_PHP_ENABLE_SYMFONY: 'off'
+        DOCKER_PHP_ENABLE_XDEBUG: 'off'
+        DOCKER_USER_UID: 1001
+        DOCKER_USER_GID: 1001
+    restart: always
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - /docker/volumes/www:/var/www/
+    expose:
+     - 9000
+    ports:
+     - "127.0.0.1:9000:9000"
+    depends_on:
+     - httpd
+     - mariadb
+     - redis
+    links:
+     - mariadb:database
+    extra_hosts:
+     - "mailserver:172.18.0.1"
+
+  mariadb:
+    container_name: mariadb
+    image: mariadb:10.1
+    restart: always
+    env_file:
+     - /docker/conf/mariadb.env
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+     - /docker/volumes/mariadb:/var/lib/mysql
+     - /docker/volumes/mysqldump:/mysqldump
+    expose:
+     - 3306
+    ports:
+     - "127.0.0.1:3306:3306"
+
+  redis:
+    container_name: redis
+    image: redis:4-alpine
+    restart: always
+    volumes:
+     - /etc/localtime:/etc/localtime:ro
+    expose:
+     - 6379
+```
 
 ## 9. Approvisionnement Ansible
 
