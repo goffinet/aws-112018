@@ -627,6 +627,19 @@ firewall-cmd --reload
 Il s'agit de profiter de l'absence de mot de passe sur le compte root pour créer la base et l'utilisateur Wordpress.
 
 ```bash
+wordpress_database_creation() {
+# Create dbuser
+mysql -e "CREATE USER ${dbuser}@localhost IDENTIFIED BY '${dbuser_password}';"
+# Create wp_database
+mysql -e "CREATE DATABASE wp_database;"
+# Fix dbuser rights on wp_database
+mysql -e "GRANT ALL ON wp_database.* TO ${dbuser}@localhost;"
+# Make our changes take effect
+mysql -e "FLUSH PRIVILEGES"
+}
+```
+
+```bash
 mysql_secure() {
 # mysql_secure_installation as model
 # Make sure that NOBODY can access the server without a password
@@ -637,12 +650,6 @@ mysql -e "DROP USER ''@'localhost'"
 mysql -e "DROP USER ''@'$(hostname)'"
 # Kill off the demo database
 mysql -e "DROP DATABASE test"
-# Create dbuser
-mysql -e "CREATE USER ${dbuser}@localhost IDENTIFIED BY '${dbuser_password}';"
-# Create wp_database
-mysql -e "CREATE DATABASE wp_database;"
-# Fix dbuser rights on wp_database
-mysql -e "GRANT ALL ON wp_database.* TO ${dbuser}@localhost;"
 # Make our changes take effect
 mysql -e "FLUSH PRIVILEGES"
 }
@@ -756,7 +763,7 @@ wp core install --url=${site_url} \
 
 ```bash
 # Update plugins to their latest version
-wp plugin update --all
+wp plugin update --all --path=${application_path}
 ```
 
 ### 4.8. Affichage des informations
@@ -768,8 +775,7 @@ echo "Go to ${site_url} to access to your application"
 ### 4.9. Résumé du déploiement de Wordpress
 
 ```bash
-wordpress_installation() {
-
+wpcli_installation() {
 # Installation de wp-cli
 curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 chmod +x wp-cli.phar ; mv wp-cli.phar /usr/local/bin/wp
@@ -778,7 +784,9 @@ chmod +x wp-cli.phar ; mv wp-cli.phar /usr/local/bin/wp
 if [ $(wp --info > /dev/null ; echo $?) == '0' ] ; then
 echo "wp-cli is working" ; else
 echo "wp-cli is NOT working" ; fi
+}
 
+wordpress_installation() {
 # Download Wordpress
 wp core download --path=${application_path} --locale=fr_FR
 
@@ -797,8 +805,10 @@ wp core install --url=${site_url} \
 --path=${application_path}
 
 # Update plugins to their latest version
-wp plugin update --all
+wp plugin update --all --path=${application_path}
+}
 
+print_end_message() {
 # Acces to your application
 echo "Go to ${site_url} to access to your application"
 }
@@ -810,14 +820,19 @@ echo "Go to ${site_url} to access to your application"
 software_installation
 enable_start_services
 open_firewall
-mysql_secure
 store_passwords
 test_stack
+wordpress_database_creation
+mysql_secure
+wpcli_installation
 wordpress_installation
+print_end_message
+
 ```
 
 ### 4.11. Améliorations et optimisations
 
+* Améliorer la gestion des erreurs
 * Configuration en Vhosts
 * Dépendance sendmail
 * HTTPS / Let's Encrypt
