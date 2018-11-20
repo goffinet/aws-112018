@@ -888,8 +888,8 @@ apt-get upgrade --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::
 apt -y install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
 }
 
-ubuntu_enable_start_services() {
-systemctl enable apache2 mysql firewalld
+ubuntu_reload_services() {
+#systemctl enable apache2 mysql firewalld
 systemctl reload apache2 mysql firewalld
 rm -rf /var/www/html/index.html
 }
@@ -990,6 +990,11 @@ print_end_message
 * Configuration Apache
 * Let's Encrypt Cert-Bot
 * Cron
+
+### 6.1. Virtual Hosts
+
+On s'intéressera au concept [d'hôte virtuel](https://linux.goffinet.org/31_services_apache_http_server/#7-serveurs-virtuels-par-nom).
+
 
 ## 7. Déploiement Wordpress Haute Disponiblité
 
