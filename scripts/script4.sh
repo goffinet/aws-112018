@@ -62,6 +62,45 @@ echo "PHP is NOT working" ; fi
 rm -f /var/www/html/info.php
 }
 
+wpcli_installation() {
+# Installation de wp-cli
+curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+chmod +x wp-cli.phar ; mv wp-cli.phar /usr/local/bin/wp
+
+# Check if wp-cli is working
+if [ $(wp --info > /dev/null ; echo $?) == '0' ] ; then
+echo "wp-cli is working" ; else
+echo "wp-cli is NOT working" ; fi
+}
+
+wordpress_installation() {
+# Download Wordpress
+wp core download --path=${application_path} --locale=fr_FR
+
+# Create wp-config.php
+wp config create --dbname=wp_database \
+--dbuser=${dbuser} \
+--dbpass=${dbuser_password} \
+--path=${application_path}
+
+# Installation
+wp core install --url=${site_url} \
+--title="${site_title}" \
+--admin_user=${admin_user} \
+--admin_password=${admin_password} \
+--admin_email=${admin_email} \
+--path=${application_path}
+
+# Update plugins to their latest version
+wp plugin update --all --path=${application_path}
+}
+
+print_end_message() {
+# Acces to your application
+echo "Go to ${site_url} to access to your application"
+}
+
+
 software_installation
 enable_start_services
 open_firewall
@@ -69,3 +108,6 @@ wordpress_database_creation
 mysql_secure
 store_passwords
 test_stack
+wpcli_installation
+wordpress_installation
+print_end_messag
