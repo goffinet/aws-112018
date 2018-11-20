@@ -885,7 +885,7 @@ Voici ce que cela donne dans le script.
 ubuntu_software_installation() {
 apt-get update
 apt-get upgrade --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
-apt -yy install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
+apt -y install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
 }
 
 ubuntu_enable_start_services() {
