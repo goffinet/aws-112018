@@ -932,33 +932,8 @@ wp plugin update --all --path=${application_path} --allow-root
 
 ```
 
-### 5.3 Configuration virtual host
 
-Il serait de bonne pratique de configurer un "virtual host" supplémentaire et de désactiver qui est installé par défaut. Ici, juste pour mémoire.
-
-`/etc/apache2/sites-available/example.com.conf`
-
-```apache
-<VirtualHost *:80>
-	ServerName example.com
-	ServerAlias www.example.com
-	DocumentRoot "/var/www/example"
-	<Directory "/var/www/example">
-		Options FollowSymLinks
-		AllowOverride all
-		Require all granted
-	</Directory>
-	ErrorLog /var/log/apache2/error.example.com.log
-	CustomLog /var/log/apache2/access.example.com.log combined
-</VirtualHost>
-```
-
-```bash
-sudo a2ensite example.com
-sudo systemctl reload apache2
-```
-
-### 5.4. Appel aux fonctions selon la distribution
+### 5.3. Appel aux fonctions selon la distribution
 
 Quel critère utiliser pour conditionner l'exécution des fonctions `fedora_*`, `centos_*` ou `ubuntu_*` ?
 
@@ -993,7 +968,71 @@ print_end_message
 
 ### 6.1. Virtual Hosts
 
-On s'intéressera au concept [d'hôte virtuel](https://linux.goffinet.org/31_services_apache_http_server/#7-serveurs-virtuels-par-nom).
+[Hôte virtuel](https://linux.goffinet.org/31_services_apache_http_server/#7-serveurs-virtuels-par-nom).
+
+Il serait de bonne pratique de configurer un "virtual host" supplémentaire (et de désactiver celui qui est installé par défaut).
+
+### 6.2. Fichier vhost pour Centos / Fedora
+
+Voici la procédure proposée pour Centos / Fedora.
+
+```bash
+fedora_vhost_creation() {
+port="80"
+error_log="/var/log/httpd/${site_name}-error_log"
+access_log="/var/log/httpd/${site_name}-access_log common"
+#Résolution de nom locale
+echo "127.0.0.1 ${site_name}" >> /etc/hosts
+#Création du dossier et des pages Web
+mkdir -p ${application_path}/${site_name}
+#Restauration de la policy Selinux sur le dossier créé
+restorecon -Rv ${application_path}/${site_name}
+#Création du dossier et des fichiers pour les logs
+mkdir -p /var/log/httpd
+touch /var/log/httpd/${site_name}-error_log
+touch /var/log/httpd/${site_name}-access_log common
+#Configuration du vhost
+cat << EOF > /etc/httpd/conf.d/${site_name}.conf
+<VirtualHost *:${port}>
+ServerAdmin webmaster@${site_name}
+DocumentRoot ${application_path}
+ServerName ${site_name}
+ErrorLog ${error_log}
+CustomLog ${access_log}
+</VirtualHost>
+EOF
+}
+```
+
+### 6.4. Fichier vhost pour Debian / Ubuntu
+
+Ici, juste pour mémoire sur Ubuntu.
+
+`/etc/apache2/sites-available/example.com.conf`
+
+```apache
+<VirtualHost *:80>
+	ServerName example.com
+	ServerAlias www.example.com
+	DocumentRoot "/var/www/example"
+	<Directory "/var/www/example">
+		Options FollowSymLinks
+		AllowOverride all
+		Require all granted
+	</Directory>
+	ErrorLog /var/log/apache2/error.example.com.log
+	CustomLog /var/log/apache2/access.example.com.log combined
+</VirtualHost>
+```
+
+```bash
+sudo a2ensite example.com
+sudo systemctl reload apache2
+```
+
+### 6.4. Certbot Let's Encrypt
+
+
 
 
 ## 7. Déploiement Wordpress Haute Disponiblité
