@@ -12,7 +12,7 @@ dbroot_password=$(pwmake 128 | head -c12)
 dbuser_password=$(pwmake 128 | head -c12)
 
 software_installation() {
-dnf -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring
+dnf -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json
 sed -i 's/^listen.acl_users/;listen.acl_users/g' /etc/php-fpm.d/www.conf
 }
 
