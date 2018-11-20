@@ -41,6 +41,7 @@ systemctl start httpd mariadb firewalld
 enable_start_services() {
 systemctl enable apache2 mysql firewalld
 systemctl reload apache2 mysql firewalld
+rm -rf /var/www/html/index.html
 }
 
 open_firewall() {
