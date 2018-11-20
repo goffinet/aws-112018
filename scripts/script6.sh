@@ -96,13 +96,14 @@ echo "wp-cli is NOT working" ; fi
 
 wordpress_installation() {
 # Download Wordpress
-wp core download --path=${application_path} --locale=fr_FR
+wp core download --path=${application_path} --locale=fr_FR --allow-root
 
 # Create wp-config.php
 wp config create --dbname=wp_database \
 --dbuser=${dbuser} \
 --dbpass=${dbuser_password} \
---path=${application_path}
+--path=${application_path} \
+--allow-root
 
 # Installation
 wp core install --url=${site_url} \
@@ -110,10 +111,11 @@ wp core install --url=${site_url} \
 --admin_user=${admin_user} \
 --admin_password=${admin_password} \
 --admin_email=${admin_email} \
---path=${application_path}
+--path=${application_path} \
+--allow-root
 
 # Update plugins to their latest version
-wp plugin update --all --path=${application_path}
+wp plugin update --all --path=${application_path} --allow-root
 }
 
 print_end_message() {
