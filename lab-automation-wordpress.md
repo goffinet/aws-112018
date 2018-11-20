@@ -1002,7 +1002,7 @@ Inspiré de [Ansible playbooks to install Wordpress in a HA configuration on IBM
 
 ## 8. Déploiement sur Docker
 
-Stack LAMP/Wordpres sur Docker.
+Stack LAMP/Wordpress sur Docker.
 
 [Docker pour ma stack LAMP](https://blog.kulakowski.fr/post/docker-pour-ma-stack-lamp)
 
