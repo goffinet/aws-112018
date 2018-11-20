@@ -855,6 +855,17 @@ Sur base de cette documentation sommaire, il est demandé d'adapter le script à
 
 A peu de choses près, il s'agit s'utiliser la commande `yum` plutôt que `dnf`.
 
+```bash
+centos_software_installation() {
+yum -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json firewalld
+}
+
+centos_enable_start_services() {
+systemctl enable httpd mariadb firewalld
+systemctl start httpd mariadb firewalld
+}
+```
+
 [How to Install FastCGI PHP-FPM on CentOS 7](https://www.webhostinghero.com/blog/install-fastcgi-php-fpm-on-centos-7/)
 
 ### 5.2. Déploiement sur Ubuntu
@@ -868,7 +879,61 @@ sudo systemctl start apache2
 sudo systemctl start mysql
 ```
 
-/etc/apache2/sites-available/example.com.conf
+Voici ce que cela donne dans le script.
+
+```bash
+ubuntu_software_installation() {
+apt update && apt -yy upgrade
+apt -yy install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
+}
+
+ubuntu_enable_start_services() {
+systemctl enable apache2 mysql firewalld
+systemctl reload apache2 mysql firewalld
+rm -rf /var/www/html/index.html
+}
+```
+
+Par défaut sous Ubuntu, les services installés sont activés et démarrent. Toutefois, il est nécessaire de redémarrer le service Apache.
+
+Notons aussi l'effacement de la page `index.html` associée au "virtual host" par défaut. En effet, dans cette configuration, en dehors de l'indiscrétion créée, elle entrera en concurrence avec la page `index.php` de Wordpress.
+
+### 5.2. Allow-root WP-CLI
+
+Aussi, on remarquera que `wp-cli` n'autorise pas à priori une exécution en tant que root, ce qui nous oblige à ajouter la directive `--allow-root` sur les commandes concernées.
+
+```bash
+wordpress_installation() {
+# Download Wordpress
+wp core download --path=${application_path} --locale=fr_FR --allow-root
+
+# Create wp-config.php
+wp config create --dbname=wp_database \
+--dbuser=${dbuser} \
+--dbpass=${dbuser_password} \
+--path=${application_path} \
+--allow-root
+
+# Installation
+wp core install --url=${site_url} \
+--title="${site_title}" \
+--admin_user=${admin_user} \
+--admin_password=${admin_password} \
+--admin_email=${admin_email} \
+--path=${application_path} \
+--allow-root
+
+# Update plugins to their latest version
+wp plugin update --all --path=${application_path} --allow-root
+}
+
+```
+
+### 5.3 Configuration virtual host
+
+Il serait de bonne pratique de configurer un "virtual host" supplémentaire et de désactiver qui est installé par défaut. Ici, juste pour mémoire.
+
+`/etc/apache2/sites-available/example.com.conf`
 
 ```apache
 <VirtualHost *:80>
@@ -888,6 +953,33 @@ sudo systemctl start mysql
 ```bash
 sudo a2ensite example.com
 sudo systemctl reload apache2
+```
+
+### 5.4. Appel aux fonctions selon la distribution
+
+Quel critère utiliser pour conditionner l'exécution des fonctions `fedora_*`, `centos_*` ou `ubuntu_*` ?
+
+Chaque distribution dispose de fichiers qui identifie son origine :
+
+```bash
+if [ -f /etc/fedora-release ] ; then
+fedora_software_installation
+fedora_enable_start_services
+elif [ -f /etc/centos-release ] ; then
+centos_software_installation
+centos_enable_start_services
+elif [ -f /etc/lsb-release ] ; then
+ubuntu_software_installation
+ubuntu_enable_start_services
+fi
+open_firewall
+wordpress_database_creation
+mysql_secure
+store_passwords
+test_stack
+wpcli_installation
+wordpress_installation
+print_end_message
 ```
 
 ## 6. Support HTTPS Let's Encrypt
