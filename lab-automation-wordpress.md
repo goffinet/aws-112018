@@ -1026,11 +1026,39 @@ Ici, juste pour mémoire sur Ubuntu.
 ```
 
 ```bash
-sudo a2ensite example.com
+sudo a2ensite example.com.conf
+sudo a2dissite 000-default
 sudo systemctl reload apache2
 ```
 
 ### 6.4. Certbot Let's Encrypt
+
+L'utilitaire certbot permet de générer des certificats TLS valides automatiquement à condition qu'un enregistrement DNS publique corresponde au site Web et qu'un service HTTP soit activé. Chaque distribution installe sont paquet :
+
+Sous Fedora :
+
+```bash
+dnf install certbot-apache
+```
+
+Sous Centos 7 :
+
+```bash
+yum -y install yum-utils
+yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+```
+
+Sous Debian / Ubuntu :
+
+```bash
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-apache
+```
+
+Une fonction dans le script pourrait ressembler à ceci :
 
 
 
