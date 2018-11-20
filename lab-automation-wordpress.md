@@ -691,7 +691,7 @@ WP-CLI est un ensemble d’outils en ligne de commande pour gérer les installat
 
 Voir [WP-CLI: Interface en ligne de commande pour WordPress](https://wp-cli.org/fr/).
 
-Toutes les opérations sur Worpress en ligne de commande :
+Toutes les opérations sur Wordpress en ligne de commande :
 
 * Téléchargement / mise à jour
 * Installation, configuration, création de base de données
@@ -759,7 +759,7 @@ wp core install --url=${site_url} \
 --path=${application_path}
 ```
 
-### 4.7. Mise-à-jour de tous les plugins dans leur dernières version
+### 4.7. Mise-à-jour de tous les plugins dans leur dernière version
 
 ```bash
 # Update plugins to their latest version
