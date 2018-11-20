@@ -12,7 +12,7 @@ dbroot_password=$(pwmake 128 | head -c12)
 dbuser_password=$(pwmake 128 | head -c12)
 
 software_installation() {
-dnf -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring wget
+dnf -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring
 sed -i 's/^listen.acl_users/;listen.acl_users/g' /etc/php-fpm.d/www.conf
 }
 
@@ -43,9 +43,9 @@ mysql -e "FLUSH PRIVILEGES"
 }
 
 store_passwords() {
-echo ${dbroot_password} > ~/.pw_wordpress
-echo ${dbuser_password} > ~/.pw_wordpress
-echo ${admin_password} > ~/.pw_wordpress
+echo "DBROOT_PASSWORD=\"${dbroot_password}\"" > ~/.pw_wordpress
+echo "DBUSER_PASSWORD=\"${dbuser_password}\"" >> ~/.pw_wordpress
+echo "ADMIN_PASSWORD=\"${admin_password}\"" >> ~/.pw_wordpress
 chmod 600 ~/.pw_wordpress
 }
 
@@ -61,3 +61,11 @@ echo "PHP is working" ; else
 echo "PHP is NOT working" ; fi
 rm -f /var/www/html/info.php
 }
+
+software_installation
+enable_start_services
+open_firewall
+wordpress_database_creation
+mysql_secure
+store_passwords
+test_stack
