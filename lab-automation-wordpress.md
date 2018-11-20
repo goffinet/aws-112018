@@ -883,7 +883,8 @@ Voici ce que cela donne dans le script.
 
 ```bash
 ubuntu_software_installation() {
-apt update && apt -yy upgrade
+apt-get update
+apt-get upgrade --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
 apt -yy install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
 }
 
@@ -893,6 +894,8 @@ systemctl reload apache2 mysql firewalld
 rm -rf /var/www/html/index.html
 }
 ```
+
+Les options `--yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"` de la commande `apt-get `
 
 Par défaut sous Ubuntu, les services installés sont activés et démarrent. Toutefois, il est nécessaire de redémarrer le service Apache.
 
