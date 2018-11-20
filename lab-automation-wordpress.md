@@ -959,7 +959,7 @@ sudo systemctl reload apache2
 
 Quel critère utiliser pour conditionner l'exécution des fonctions `fedora_*`, `centos_*` ou `ubuntu_*` ?
 
-Chaque distribution dispose de fichiers qui identifie son origine :
+Chaque distribution dispose d'au moins un fichier qui identifie son origine :
 
 ```bash
 if [ -f /etc/fedora-release ] ; then
