@@ -110,4 +110,4 @@ store_passwords
 test_stack
 wpcli_installation
 wordpress_installation
-print_end_messag
+print_end_message
