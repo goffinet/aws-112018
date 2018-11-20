@@ -853,7 +853,7 @@ Sur base de cette documentation sommaire, il est demandé d'adapter le script à
 
 ### 5.1. Déploiement Centos7
 
-A peu de choses près, il s'agit s'utiliser la commande `yum` plutôt que `dnf`.
+A peu de choses près, il s'agit s'utiliser la commande `yum` plutôt que `dnf`, sauf que `php-fpm` n'est pas installé par défaut.
 
 ```bash
 centos_software_installation() {
