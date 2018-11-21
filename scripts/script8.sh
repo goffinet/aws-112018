@@ -57,7 +57,7 @@ log_path="/var/log/httpd"
 vhost_path="/etc/httpd/conf.d"
 vhost_creation
 #Restauration de la policy Selinux sur le dossier créé
-restorecon -Rv ${vhost_path}
+restorecon -Rv ${application_path}
 elif [ -f /etc/lsb-release ] ; then
 log_path="/var/log/apache2"
 vhost_path="/etc/apache2/sites-available"
