@@ -100,11 +100,13 @@ certbot --apache --register-unsafely-without-email --agree-tos -d "${site_url}" 
 https_installation() {
 if [ -f /etc/fedora-release ] ; then
 dnf -y install certbot-apache
+mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.old
 https_activation
 systemctl reload httpd
 chown apache:apache /run/php-fpm/www.sock
 elif [ -f /etc/centos-release ] ; then
 yum -y install python2-certbot-apache
+mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.old
 https_activation
 systemctl reload httpd
 elif [ -f /etc/lsb-release ] ; then
