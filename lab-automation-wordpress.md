@@ -1118,12 +1118,14 @@ sudo apt-get install python-certbot-apache
 Une fonction dans le script pourrait ressembler à ceci :
 
 ```bash
+https_installation() {
 systemctl reload httpd || systemctl reload apache2
 chown apache:apache /run/php-fpm/www.sock 2> /dev/null
 # Three times if DNS failure
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+}
 ```
 
 Voici le résultat de l'opération :
