@@ -17,4 +17,5 @@ rm -rf /etc/httpd*
 rm -rf /etc/apache2/*
 rm -rf /etc/php*
 firewall-cmd --zone=public --permanent --remove-service=http
+firewall-cmd --zone=public --permanent --remove-service=https
 firewall-cmd --reload
