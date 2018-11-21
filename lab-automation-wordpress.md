@@ -1004,6 +1004,10 @@ EOF
 }
 ```
 
+```bash
+httpd -D DUMP_VHOSTS
+```
+
 ### 6.4. Fichier vhost pour Debian / Ubuntu
 
 Ici, juste pour mémoire sur Ubuntu.
@@ -1031,7 +1035,60 @@ sudo a2dissite 000-default
 sudo systemctl reload apache2
 ```
 
-### 6.4. Certbot Let's Encrypt
+### 6.5. Mise en commun de la configuration vhost
+
+```bash
+vhost_creation() {
+port="80"
+error_log="${log_path}/${site_name}-error_log"
+access_log="${log_path}/${site_name}-access_log common"
+#Résolution de nom locale
+echo "127.0.0.1 ${site_name}" >> /etc/hosts
+#Création du dossier et des pages Web
+mkdir -p ${application_path}/${site_name}
+#Création du dossier et des fichiers pour les logs
+mkdir -p ${log_path}
+touch ${error_log}
+touch ${access_log}
+#Configuration du vhost
+cat << EOF > ${vhost_path}/${site_name}.conf
+<VirtualHost *:${port}>
+ServerAdmin webmaster@${site_name}
+DocumentRoot ${application_path}
+ServerName ${site_name}
+ErrorLog ${error_log}
+CustomLog ${access_log}
+</VirtualHost>
+EOF
+}
+```
+
+```bash
+if [ -f /etc/fedora-release ] ; then
+fedora_software_installation
+elif [ -f /etc/centos-release ] ; then
+centos_software_installation
+elif [ -f /etc/lsb-release ] ; then
+ubuntu_software_installation
+open_firewall
+log_path="/var/log/apache2"
+vhost_path="/etc/apache2/sites-available"
+vhost_creation
+a2dissite 000-default ; a2ensite ${site_name}.conf
+ubuntu_reload_services
+fi
+if [ -f /etc/redhat-release ] ; then
+open_firewall
+log_path="/var/log/httpd"
+vhost_path="/etc/httpd/conf.d"
+vhost_creation
+#Restauration de la policy Selinux sur le dossier créé
+restorecon -Rv ${location}/${host}
+centos_enable_start_services
+fi
+```
+
+### 6.6. Certbot Let's Encrypt
 
 L'utilitaire certbot permet de générer des certificats TLS valides automatiquement à condition qu'un enregistrement DNS publique corresponde au site Web et qu'un service HTTP soit activé. Chaque distribution installe sont paquet :
 
@@ -1060,8 +1117,33 @@ sudo apt-get install python-certbot-apache
 
 Une fonction dans le script pourrait ressembler à ceci :
 
+```bash
+systemctl reload httpd || systemctl reload apache2
+chown apache:apache /run/php-fpm/www.sock 2> /dev/null
+# Three times if DNS failure
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+```
 
+Voici le résultat de l'opération :
 
+```bash
+cat /etc/httpd/conf.d/www.51.158.65.218.nip.io-le-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+ServerAdmin webmaster@www.51.158.65.218.nip.io
+DocumentRoot /var/www/html
+ServerName www.51.158.65.218.nip.io
+ErrorLog /var/log/httpd/www.51.158.65.218.nip.io-error_log
+CustomLog /var/log/httpd/www.51.158.65.218.nip.io-access_log common
+
+SSLCertificateFile /etc/letsencrypt/live/www.51.158.65.218.nip.io/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/www.51.158.65.218.nip.io/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+</IfModule>
+```
 
 ## 7. Déploiement Wordpress Haute Disponiblité
 
