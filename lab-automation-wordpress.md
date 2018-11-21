@@ -691,7 +691,7 @@ WP-CLI est un ensemble d’outils en ligne de commande pour gérer les installat
 
 Voir [WP-CLI: Interface en ligne de commande pour WordPress](https://wp-cli.org/fr/).
 
-Toutes les opérations sur Worpress en ligne de commande :
+Toutes les opérations sur Wordpress en ligne de commande :
 
 * Téléchargement / mise à jour
 * Installation, configuration, création de base de données
@@ -759,7 +759,7 @@ wp core install --url=${site_url} \
 --path=${application_path}
 ```
 
-### 4.7. Mise-à-jour de tous les plugins dans leur dernières version
+### 4.7. Mise-à-jour de tous les plugins dans leur dernière version
 
 ```bash
 # Update plugins to their latest version
@@ -853,7 +853,18 @@ Sur base de cette documentation sommaire, il est demandé d'adapter le script à
 
 ### 5.1. Déploiement Centos7
 
-A peu de choses près, il s'agit s'utiliser la commande `yum` plutôt que `dnf`.
+A peu de choses près, il s'agit s'utiliser la commande `yum` plutôt que `dnf`, sauf que `php-fpm` n'est pas installé par défaut.
+
+```bash
+centos_software_installation() {
+yum -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json firewalld
+}
+
+centos_enable_start_services() {
+systemctl enable httpd mariadb firewalld
+systemctl start httpd mariadb firewalld
+}
+```
 
 [How to Install FastCGI PHP-FPM on CentOS 7](https://www.webhostinghero.com/blog/install-fastcgi-php-fpm-on-centos-7/)
 
@@ -868,7 +879,140 @@ sudo systemctl start apache2
 sudo systemctl start mysql
 ```
 
-/etc/apache2/sites-available/example.com.conf
+Voici ce que cela donne dans le script.
+
+```bash
+ubuntu_software_installation() {
+apt-get update
+apt-get upgrade --yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"
+apt -y install apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip firewalld
+}
+
+ubuntu_reload_services() {
+#systemctl enable apache2 mysql firewalld
+systemctl reload apache2 mysql firewalld
+rm -rf /var/www/html/index.html
+}
+```
+
+Les options `--yes --force-yes -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold"` de la commande `apt-get `
+
+Par défaut sous Ubuntu, les services installés sont activés et démarrent. Toutefois, il est nécessaire de redémarrer le service Apache.
+
+Notons aussi l'effacement de la page `index.html` associée au "virtual host" par défaut. En effet, dans cette configuration, en dehors de l'indiscrétion créée, elle entrera en concurrence avec la page `index.php` de Wordpress.
+
+### 5.2. Allow-root WP-CLI
+
+Aussi, on remarquera que `wp-cli` n'autorise pas à priori une exécution en tant que root, ce qui nous oblige à ajouter la directive `--allow-root` sur les commandes concernées.
+
+```bash
+wordpress_installation() {
+# Download Wordpress
+wp core download --path=${application_path} --locale=fr_FR --allow-root
+
+# Create wp-config.php
+wp config create --dbname=wp_database \
+--dbuser=${dbuser} \
+--dbpass=${dbuser_password} \
+--path=${application_path} \
+--allow-root
+
+# Installation
+wp core install --url=${site_url} \
+--title="${site_title}" \
+--admin_user=${admin_user} \
+--admin_password=${admin_password} \
+--admin_email=${admin_email} \
+--path=${application_path} \
+--allow-root
+
+# Update plugins to their latest version
+wp plugin update --all --path=${application_path} --allow-root
+}
+
+```
+
+
+### 5.3. Appel aux fonctions selon la distribution
+
+Quel critère utiliser pour conditionner l'exécution des fonctions `fedora_*`, `centos_*` ou `ubuntu_*` ?
+
+Chaque distribution dispose d'au moins un fichier qui identifie son origine :
+
+```bash
+if [ -f /etc/fedora-release ] ; then
+fedora_software_installation
+fedora_enable_start_services
+elif [ -f /etc/centos-release ] ; then
+centos_software_installation
+centos_enable_start_services
+elif [ -f /etc/lsb-release ] ; then
+ubuntu_software_installation
+ubuntu_enable_start_services
+fi
+open_firewall
+wordpress_database_creation
+mysql_secure
+store_passwords
+test_stack
+wpcli_installation
+wordpress_installation
+print_end_message
+```
+
+## 6. Support HTTPS Let's Encrypt
+
+* Configuration Apache
+* Let's Encrypt Cert-Bot
+* Cron
+
+### 6.1. Virtual Hosts
+
+[Hôte virtuel](https://linux.goffinet.org/31_services_apache_http_server/#7-serveurs-virtuels-par-nom).
+
+Il serait de bonne pratique de configurer un "virtual host" supplémentaire (et de désactiver celui qui est installé par défaut).
+
+### 6.2. Fichier vhost pour Centos / Fedora
+
+Voici la procédure proposée pour Centos / Fedora.
+
+```bash
+fedora_vhost_creation() {
+port="80"
+error_log="/var/log/httpd/${site_name}-error_log"
+access_log="/var/log/httpd/${site_name}-access_log common"
+#Résolution de nom locale
+echo "127.0.0.1 ${site_name}" >> /etc/hosts
+#Création du dossier et des pages Web
+mkdir -p ${application_path}/${site_name}
+#Restauration de la policy Selinux sur le dossier créé
+restorecon -Rv ${application_path}/${site_name}
+#Création du dossier et des fichiers pour les logs
+mkdir -p /var/log/httpd
+touch /var/log/httpd/${site_name}-error_log
+touch /var/log/httpd/${site_name}-access_log common
+#Configuration du vhost
+cat << EOF > /etc/httpd/conf.d/${site_name}.conf
+<VirtualHost *:${port}>
+ServerAdmin webmaster@${site_name}
+DocumentRoot ${application_path}
+ServerName ${site_name}
+ErrorLog ${error_log}
+CustomLog ${access_log}
+</VirtualHost>
+EOF
+}
+```
+
+```bash
+httpd -D DUMP_VHOSTS
+```
+
+### 6.4. Fichier vhost pour Debian / Ubuntu
+
+Ici, juste pour mémoire sur Ubuntu.
+
+`/etc/apache2/sites-available/example.com.conf`
 
 ```apache
 <VirtualHost *:80>
@@ -886,15 +1030,122 @@ sudo systemctl start mysql
 ```
 
 ```bash
-sudo a2ensite example.com
+sudo a2ensite example.com.conf
+sudo a2dissite 000-default
 sudo systemctl reload apache2
 ```
 
-## 6. Support HTTPS Let's Encrypt
+### 6.5. Mise en commun de la configuration vhost
 
-* Configuration Apache
-* Let's Encrypt Cert-Bot
-* Cron
+```bash
+vhost_creation() {
+port="80"
+error_log="${log_path}/${site_name}-error_log"
+access_log="${log_path}/${site_name}-access_log common"
+#Résolution de nom locale
+echo "127.0.0.1 ${site_name}" >> /etc/hosts
+#Création du dossier et des pages Web
+mkdir -p ${application_path}/${site_name}
+#Création du dossier et des fichiers pour les logs
+mkdir -p ${log_path}
+touch ${error_log}
+touch ${access_log}
+#Configuration du vhost
+cat << EOF > ${vhost_path}/${site_name}.conf
+<VirtualHost *:${port}>
+ServerAdmin webmaster@${site_name}
+DocumentRoot ${application_path}
+ServerName ${site_name}
+ErrorLog ${error_log}
+CustomLog ${access_log}
+</VirtualHost>
+EOF
+}
+```
+
+```bash
+if [ -f /etc/fedora-release ] ; then
+fedora_software_installation
+elif [ -f /etc/centos-release ] ; then
+centos_software_installation
+elif [ -f /etc/lsb-release ] ; then
+ubuntu_software_installation
+open_firewall
+log_path="/var/log/apache2"
+vhost_path="/etc/apache2/sites-available"
+vhost_creation
+a2dissite 000-default ; a2ensite ${site_name}.conf
+ubuntu_reload_services
+fi
+if [ -f /etc/redhat-release ] ; then
+open_firewall
+log_path="/var/log/httpd"
+vhost_path="/etc/httpd/conf.d"
+vhost_creation
+#Restauration de la policy Selinux sur le dossier créé
+restorecon -Rv ${location}/${host}
+centos_enable_start_services
+fi
+```
+
+### 6.6. Certbot Let's Encrypt
+
+L'utilitaire certbot permet de générer des certificats TLS valides automatiquement à condition qu'un **enregistrement DNS publique** corresponde au site Web et qu'un **service HTTP** soit activé. Chaque distribution installe son paquet :
+
+Sous Fedora :
+
+```bash
+dnf install certbot-apache
+```
+
+Sous Centos 7 :
+
+```bash
+yum install python2-certbot-apache
+```
+
+Sous Debian / Ubuntu :
+
+```bash
+sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot
+sudo apt-get update
+sudo apt-get install python-certbot-apache
+```
+
+Une fonction dans le script pourrait ressembler à ceci :
+
+```bash
+https_installation() {
+systemctl reload httpd || systemctl reload apache2
+chown apache:apache /run/php-fpm/www.sock 2> /dev/null
+# Three times if DNS failure
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+(crontab -l 2>/dev/null; echo "0 0,12 * * * python -c "import random; import time; time.sleep(random.random() * 3600)" && certbot renew") | crontab -
+}
+```
+
+Voici le résultat de l'opération :
+
+```bash
+cat /etc/httpd/conf.d/www.51.158.65.218.nip.io-le-ssl.conf
+<IfModule mod_ssl.c>
+<VirtualHost *:443>
+ServerAdmin webmaster@www.51.158.65.218.nip.io
+DocumentRoot /var/www/html
+ServerName www.51.158.65.218.nip.io
+ErrorLog /var/log/httpd/www.51.158.65.218.nip.io-error_log
+CustomLog /var/log/httpd/www.51.158.65.218.nip.io-access_log common
+
+SSLCertificateFile /etc/letsencrypt/live/www.51.158.65.218.nip.io/fullchain.pem
+SSLCertificateKeyFile /etc/letsencrypt/live/www.51.158.65.218.nip.io/privkey.pem
+Include /etc/letsencrypt/options-ssl-apache.conf
+</VirtualHost>
+</IfModule>
+```
 
 ## 7. Déploiement Wordpress Haute Disponiblité
 
@@ -910,7 +1161,7 @@ Inspiré de [Ansible playbooks to install Wordpress in a HA configuration on IBM
 
 ## 8. Déploiement sur Docker
 
-Stack LAMP/Wordpres sur Docker.
+Stack LAMP/Wordpress sur Docker.
 
 [Docker pour ma stack LAMP](https://blog.kulakowski.fr/post/docker-pour-ma-stack-lamp)
 
