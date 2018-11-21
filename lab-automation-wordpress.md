@@ -1124,6 +1124,7 @@ chown apache:apache /run/php-fpm/www.sock 2> /dev/null
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
 certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+(crontab -l 2>/dev/null; echo "0 0,12 * * * python -c "import random; import time; time.sleep(random.random() * 3600)" && certbot renew") | crontab -
 }
 ```
 
