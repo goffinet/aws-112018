@@ -6,10 +6,10 @@ site_url="www.${ip_address}.nip.io"
 application_path="/var/www/html"
 admin_email="test@test.com"
 admin_user="admin"
-admin_password=$(pwmake 128 | head -c12)
+admin_password=$(openssl rand -base64 12)
 dbuser="wpuser"
-dbroot_password=$(pwmake 128 | head -c12)
-dbuser_password=$(pwmake 128 | head -c12)
+dbroot_password=$(openssl rand -base64 12)
+dbuser_password=$(openssl rand -base64 12)
 
 software_installation() {
 if [ -f /etc/fedora-release ] ; then
