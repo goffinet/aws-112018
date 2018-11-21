@@ -76,7 +76,8 @@ elif [ -f /etc/centos-release ] ; then
 systemctl enable httpd mariadb firewalld
 systemctl start httpd mariadb firewalld
 elif [ -f /etc/lsb-release ] ; then
-#systemctl enable apache2 mysql firewalld
+systemctl enable apache2 mysql firewalld
+systemctl start apache2 mysql firewalld
 systemctl reload apache2 mysql firewalld
 rm -rf /var/www/html/index.html
 else
