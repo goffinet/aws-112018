@@ -201,9 +201,9 @@ echo "Go to http://${site_url} to access to your application"
 
 
 software_installation
-open_firewall
 vhosts_installation
 enable_start_services
+open_firewall
 https_installation
 wordpress_database_creation
 mysql_secure

@@ -5,7 +5,7 @@ systemctl stop apache2 mysql
 systemctl disable httpd mariadb php-fpm
 systemctl disable apache2 mysql
 dnf -y remove mariadb mariadb-server httpd php-fpm
-apt -y remove apache2 mariadb-server
+apt-get -y --purge remove apache2 mariadb-server
 rm -rf /var/lib/mysql
 rm -r /etc/my.cnf
 rm -r ~/.my.cnf
