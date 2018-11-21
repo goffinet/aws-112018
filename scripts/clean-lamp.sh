@@ -15,6 +15,6 @@ rm -f ~/.my.cnf
 rm -rf /var/www/html
 rm -rf /etc/httpd*
 rm -rf /etc/apache2/*
-rm -rf /etc/php-fpm*
+rm -rf /etc/php*
 firewall-cmd --zone=public --permanent --remove-service=http
 firewall-cmd --reload
