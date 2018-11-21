@@ -91,9 +91,9 @@ firewall-cmd --reload
 
 https_activation() {
 # Three times if DNS failure
-certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
-certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
-certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_url}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_url}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_url}" -n
 #(crontab -l 2>/dev/null; echo "0 0,12 * * * python -c "import random; import time; time.sleep(random.random() * 3600)" && certbot renew") | crontab -
 }
 
