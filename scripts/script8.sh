@@ -196,7 +196,7 @@ wp plugin update --all --path=${application_path} --allow-root
 
 print_end_message() {
 # Acces to your application
-echo "Go to http://${site_url} to access to your application"
+echo "Go to http://${site_url} or https://${site_url} to access to your application"
 }
 
 
