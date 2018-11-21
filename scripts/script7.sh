@@ -2,7 +2,7 @@
 
 ip_address=$(curl -s https://ipinfo.io/ip)
 site_title="Demo Wordpress"
-site_url="http://www.${ip_address}.xip.io"
+site_url="www.${ip_address}.xip.io"
 application_path="/var/www/html"
 admin_email="test@test.com"
 admin_user="admin"
@@ -121,7 +121,7 @@ wp plugin update --all --path=${application_path} --allow-root
 
 print_end_message() {
 # Acces to your application
-echo "Go to ${site_url} to access to your application"
+echo "Go to http://${site_url} to access to your application"
 }
 
 
