@@ -75,7 +75,7 @@ chown apache:apache /run/php-fpm/www.sock
 elif [ -f /etc/centos-release ] ; then
 systemctl enable httpd mariadb firewalld
 systemctl start httpd mariadb firewalld
-elif [ -f /etc/centos-release ] ; then
+elif [ -f /etc/lsb-release ] ; then
 #systemctl enable apache2 mysql firewalld
 systemctl reload apache2 mysql firewalld
 rm -rf /var/www/html/index.html
@@ -87,6 +87,37 @@ fi
 open_firewall() {
 firewall-cmd --zone=public --add-service=http --permanent
 firewall-cmd --reload
+}
+
+https_activation() {
+# Three times if DNS failure
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n || \
+certbot --apache --register-unsafely-without-email --agree-tos -d "${site_name}" -n
+#(crontab -l 2>/dev/null; echo "0 0,12 * * * python -c "import random; import time; time.sleep(random.random() * 3600)" && certbot renew") | crontab -
+}
+
+https_installation() {
+if [ -f /etc/fedora-release ] ; then
+dnf -y install certbot-apache
+https_activation
+systemctl reload httpd
+chown apache:apache /run/php-fpm/www.sock
+elif [ -f /etc/centos-release ] ; then
+yum -y install python2-certbot-apache
+https_activation
+systemctl reload httpd
+elif [ -f /etc/lsb-release ] ; then
+apt-get update
+apt-get -y install software-properties-common
+add-apt-repository ppa:certbot/certbot -y
+apt-get -y update
+apt-get -y install python-certbot-apache
+https_activation
+systemctl reload apache2
+else
+break
+fi
 }
 
 mysql_secure() {
@@ -169,6 +200,7 @@ software_installation
 open_firewall
 vhosts_installation
 enable_start_services
+https_installation
 wordpress_database_creation
 mysql_secure
 store_passwords
