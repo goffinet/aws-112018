@@ -1090,7 +1090,7 @@ fi
 
 ### 6.6. Certbot Let's Encrypt
 
-L'utilitaire certbot permet de générer des certificats TLS valides automatiquement à condition qu'un enregistrement DNS publique corresponde au site Web et qu'un service HTTP soit activé. Chaque distribution installe sont paquet :
+L'utilitaire certbot permet de générer des certificats TLS valides automatiquement à condition qu'un **enregistrement DNS publique** corresponde au site Web et qu'un **service HTTP** soit activé. Chaque distribution installe sont paquet :
 
 Sous Fedora :
 
