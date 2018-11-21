@@ -1101,8 +1101,7 @@ dnf install certbot-apache
 Sous Centos 7 :
 
 ```bash
-yum -y install yum-utils
-yum-config-manager --enable rhui-REGION-rhel-server-extras rhui-REGION-rhel-server-optional
+yum install python2-certbot-apache
 ```
 
 Sous Debian / Ubuntu :
