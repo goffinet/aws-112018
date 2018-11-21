@@ -1,10 +1,8 @@
 #!/bin/bash
 
-#ip_address=$(curl -s https://ipinfo.io/ip)
-ip_address=$(ip add show dev eth0 | grep 'inet ' | awk '{print $2}' | sed 's/\/.*//')
+ip_address=$(curl -s https://ipinfo.io/ip)
 site_title="Demo Wordpress"
-#site_url="http://www.${ip_address}.xip.io"
-site_url=${ip_address}
+site_url="http://www.${ip_address}.xip.io"
 application_path="/var/www/html"
 admin_email="test@test.com"
 admin_user="admin"
