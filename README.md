@@ -89,22 +89,26 @@
 - [10. Nginx comme Proxy](https://linux.goffinet.org/32_services_nginx/)
 - [11. Services de Base de Données](https://linux.goffinet.org/33_services_base_de_donnees/)
 
-
 ## Administration Linux : 2e partie
 
 * [Lab Automation LAMP Wordpress](lab-automation-wordpress.md)
 
 ## Docker
 
-En préparation
+* [https://docker.goffinet.org](https://docker.goffinet.org)
+* https://github.com/jpetazzo/container.training
+* https://docs.docker.com/get-started/
+* https://labs.play-with-docker.com/
 
 ## Puppet
 
-En prépration
+* [https://puppet.goffinet.org](https://puppet.goffinet.org)
+* https://puppet.com/download-learning-vm
+* https://github.com/puppetlabs/puppet-quest-guide
 
-## [Ansible](https://ansible.goffinet.org)
+## Ansible
 
-En travail.
+[Ansible](https://ansible.goffinet.org)
 
 ## Git
 
