@@ -100,6 +100,14 @@
 * https://docs.docker.com/get-started/
 * https://labs.play-with-docker.com/
 
+### Étude de cas
+
+* https://github.com/jpetazzo/figdemo
+* https://docs.docker.com/compose/wordpress/#define-the-project
+* https://github.com/scaleway-community/scaleway-wordpress/tree/master/latest
+* plone: https://docs.plone.org/manage/docker/docs/index.html
+
+
 ## Puppet
 
 * [https://puppet.goffinet.org](https://puppet.goffinet.org)
