@@ -109,10 +109,16 @@
 
 
 ## Puppet
-
+https://doc.fedora-fr.org/wiki/Puppet
 * [https://puppet.goffinet.org](https://puppet.goffinet.org)
 * https://puppet.com/download-learning-vm
 * https://github.com/puppetlabs/puppet-quest-guide
+
+### Lectures
+
+* [https://doc.fedora-fr.org/wiki/Puppet](https://doc.fedora-fr.org/wiki/Puppet)
+* [FICHE TECHNIQUE : AUTOMATISATION DES TESTS D’INFRASTRUCTURE AVEC PUPPET, FGOUTEROUX](https://blog.d2si.io/2015/03/18/technique-puppet-beaker/)
+* [Puppet white papers](https://puppet.com/resources/whitepaper)
 
 ## Ansible
 
