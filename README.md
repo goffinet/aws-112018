@@ -134,7 +134,7 @@ https://doc.fedora-fr.org/wiki/Puppet
 
 ## Jenkins
 
-* [Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf)
+* [Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)
 
 ## [Amazon Web Services](https://aws-dev.goffinet.org)
 
