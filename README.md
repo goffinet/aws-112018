@@ -109,6 +109,7 @@
 
 
 ## Puppet
+
 https://doc.fedora-fr.org/wiki/Puppet
 * [https://puppet.goffinet.org](https://puppet.goffinet.org)
 * https://puppet.com/download-learning-vm
@@ -133,7 +134,7 @@ https://doc.fedora-fr.org/wiki/Puppet
 
 ## Jenkins
 
-En préparation.
+* [Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf)
 
 ## [Amazon Web Services](https://aws-dev.goffinet.org)
 
