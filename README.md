@@ -95,7 +95,7 @@
 
 ## Docker
 
-* [https://docker.goffinet.org](https://docker.goffinet.org)
+* **[https://docker.goffinet.org](https://docker.goffinet.org)**
 * https://github.com/jpetazzo/container.training
 * https://docs.docker.com/get-started/
 * https://labs.play-with-docker.com/
@@ -110,8 +110,7 @@
 
 ## Puppet
 
-https://doc.fedora-fr.org/wiki/Puppet
-* [https://puppet.goffinet.org](https://puppet.goffinet.org)
+* **[https://puppet.goffinet.org](https://puppet.goffinet.org)**
 * https://puppet.com/download-learning-vm
 * https://github.com/puppetlabs/puppet-quest-guide
 
@@ -123,18 +122,20 @@ https://doc.fedora-fr.org/wiki/Puppet
 
 ## Ansible
 
-[Ansible](https://ansible.goffinet.org)
+**[https://ansible.goffinet.org](https://ansible.goffinet.org)**
 
 ## Git
 
+* **[Pro Git, le livre](https://book.git-scm.com/book/fr/v2), [PDF](https://github.com/progit/progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)**
 * [Création d'un compte Github](https://nexus-coding.blogspot.com/2015/10/tutoriel-creation-dun-compte-github-et.html)
 * [git - petit guide](http://rogerdudler.github.io/git-guide/index.fr.html)
+* [Pro Git, le livre](https://book.git-scm.com/book/fr/v2), [PDF](https://github.com/progit/progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)
 * [Ajouter une clé SSH à son compte github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 * [Changer d'origine https en ssh](https://help.github.com/articles/changing-a-remote-s-url/)
 
 ## Jenkins
 
-* [Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)
+* **[Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)**
 
 ## [Amazon Web Services](https://aws-dev.goffinet.org)
 
