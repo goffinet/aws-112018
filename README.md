@@ -1,17 +1,19 @@
 # AWS 11-2018
 
-**Notes de formation**
+_Notes de formation_
+
+François-Emmanuel Goffinet
 
 <!-- toc -->
 
 ## Environnement
 
 * https://github.com/goffinet/aws-112018
-* Installation Centos
+* Installation Centos 7
 * yum -y install epel-release ; yum -y upgrade
-* Atom.io : https://atom.io/
-* chromium
-* compte github
+* Installtion de Atom.io : https://atom.io/
+* Installtion de chromium
+* Création d'un compte Github
 * https://github.com/goffinet/virt-scripts
 * vagarant, vagrant-libvirt, vagrant-mutate
 
@@ -129,13 +131,15 @@
 * **[Pro Git, le livre](https://book.git-scm.com/book/fr/v2), [PDF](https://github.com/progit/progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)**
 * [Création d'un compte Github](https://nexus-coding.blogspot.com/2015/10/tutoriel-creation-dun-compte-github-et.html)
 * [git - petit guide](http://rogerdudler.github.io/git-guide/index.fr.html)
-* [Pro Git, le livre](https://book.git-scm.com/book/fr/v2), [PDF](https://github.com/progit/progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)
+progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)
 * [Ajouter une clé SSH à son compte github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 * [Changer d'origine https en ssh](https://help.github.com/articles/changing-a-remote-s-url/)
 
 ## Jenkins
 
 * **[Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)**
+* [Jenkins User Handbook](https://jenkins.io/doc/book/getting-started/), [PDF](https://jenkins.io/user-handbook.pdf)
+* [Jenkins Tutorials](https://jenkins.io/doc/tutorials/)
 
 ## [Amazon Web Services](https://aws-dev.goffinet.org)
 
