@@ -10,7 +10,7 @@ François-Emmanuel Goffinet
 
 * https://github.com/goffinet/aws-112018
 * Installation Centos 7
-* yum -y install epel-release ; yum -y upgrade
+* `yum -y install epel-release ; yum -y upgrade`
 * Installtion de Atom.io : https://atom.io/
 * Installtion de chromium
 * Création d'un compte Github
@@ -141,6 +141,6 @@ progit2-fr/releases/download/2.1.32/progit_v2.1.32.pdf)
 * [Jenkins User Handbook](https://jenkins.io/doc/book/getting-started/), [PDF](https://jenkins.io/user-handbook.pdf)
 * [Jenkins Tutorials](https://jenkins.io/doc/tutorials/)
 
-## [Amazon Web Services](https://aws-dev.goffinet.org)
+## Amazon Web Services
 
-En travail.
+En travail. [Amazon Web Services](https://aws-dev.goffinet.org)
