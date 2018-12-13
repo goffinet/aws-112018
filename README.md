@@ -136,13 +136,15 @@ François-Emmanuel Goffinet
 * [Ajouter une clé SSH à son compte github](https://help.github.com/articles/adding-a-new-ssh-key-to-your-github-account/)
 * [Changer d'origine https en ssh](https://help.github.com/articles/changing-a-remote-s-url/)
 
-## DevOps
-
 ## Jenkins
 
 * **[Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)**
 * [Jenkins User Handbook](https://jenkins.io/doc/book/getting-started/), [PDF](https://jenkins.io/user-handbook.pdf)
 * [Jenkins Tutorials](https://jenkins.io/doc/tutorials/)
+
+## DevOps
+
+* [Apprendre le déploiement continu avec des générateurs de site statique](https://ci-cd.goffinet.org/)
 
 ## Amazon Web Services
 
