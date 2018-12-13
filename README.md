@@ -141,6 +141,10 @@ François-Emmanuel Goffinet
 * **[Jenkins - Le guide complet](https://jenkins-le-guide-complet.github.io/), [PDF](https://jenkins-le-guide-complet.github.io/continuous-integration-with-hudson.pdf), [source](https://github.com/Jenkins-Le-guide-complet)**
 * [Jenkins User Handbook](https://jenkins.io/doc/book/getting-started/), [PDF](https://jenkins.io/user-handbook.pdf)
 * [Jenkins Tutorials](https://jenkins.io/doc/tutorials/)
+* **[Joostvdg's Software Engineering Page sur Jenkins](https://joostvdg.github.io/jenkins/)**
+* https://go.cloudbees.com/docs/cloudbees-documentation/use/automating-projects/jenkinsfile/
+
+Alternatives : Gitlab, Bitbucket, Travis CI
 
 ## DevOps
 
@@ -149,3 +153,5 @@ François-Emmanuel Goffinet
 ## Amazon Web Services
 
 En travail. [Amazon Web Services](https://aws-dev.goffinet.org)
+
+* https://templates.cloudonaut.io/en/stable/
