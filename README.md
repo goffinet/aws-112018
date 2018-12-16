@@ -149,6 +149,7 @@ Alternatives : Gitlab, Bitbucket, Travis CI
 ## DevOps
 
 * [Apprendre le déploiement continu avec des générateurs de site statique](https://ci-cd.goffinet.org/)
+* https://xebialabs.com/periodic-table-of-devops-tools/
 
 ## Amazon Web Services
 
