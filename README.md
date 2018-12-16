@@ -144,12 +144,20 @@ François-Emmanuel Goffinet
 * **[Joostvdg's Software Engineering Page sur Jenkins](https://joostvdg.github.io/jenkins/)**
 * https://go.cloudbees.com/docs/cloudbees-documentation/use/automating-projects/jenkinsfile/
 
-Alternatives : Gitlab, Bitbucket, Travis CI
+Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 ## DevOps
 
 * [Apprendre le déploiement continu avec des générateurs de site statique](https://ci-cd.goffinet.org/)
 * https://xebialabs.com/periodic-table-of-devops-tools/
+
+## Administration de serveur Web Apache
+
+* [8. Services Web](https://linux.goffinet.org/30_services_web/)
+  * API HTTP Rest : https://medium.freecodecamp.org/build-restful-api-with-authentication-under-5-minutes-using-loopback-by-expressjs-no-programming-31231b8472ca
+  * Postman : https://www.getpostman.com/
+* [9. Apache HTTP Server](https://linux.goffinet.org/31_services_apache_http_server/)
+* [10. Nginx comme Proxy](https://linux.goffinet.org/32_services_nginx/)
 
 ## Amazon Web Services
 
