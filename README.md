@@ -4,8 +4,6 @@ _Notes de formation_
 
 François-Emmanuel Goffinet
 
-
-
 <!-- toc -->
 
 ## Environnement
@@ -158,6 +156,20 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
   * Postman : https://www.getpostman.com/
 * [9. Apache HTTP Server](https://linux.goffinet.org/31_services_apache_http_server/)
 * [10. Nginx comme Proxy](https://linux.goffinet.org/32_services_nginx/)
+
+## Administration Websphere
+
+* [WebSphere Application Server V8.5.5 Technical Overview](http://www.redbooks.ibm.com/redpapers/pdfs/redp4855.pdf)
+* [WebSphere Application Server V8.5 Administration and Configuration Guide for the Full Profile](http://www.redbooks.ibm.com/redbooks/pdfs/sg248056.pdf)
+* [Introduction à Websphere Application Server](https://www.supinfo.com/articles/single/3240-introduction-websphere-application-server)
+* [IBM WebSphere Application Server (WAS) V9.0 Tutorial](https://mindmajix.com/ibm-was-tutorial)
+* [ibmcom/websphere-traditional](https://hub.docker.com/r/ibmcom/websphere-traditional/)
+* [WASdev/ci.docker.websphere-traditional](https://github.com/WASdev/ci.docker.websphere-traditional)
+* [Modernizing Traditional Java Applications](https://training.play-with-docker.com/java-mta/)
+* [Websphere Application Server V8.5.5.9 Network Deployment 2-Node Cluster on Docker](https://redheadhat.wordpress.com/2016/11/01/websphere-application-server-v8-5-5-9-network-deployment-2-node-cluster-on-docker/)
+* [How to configure IBM WebSphere Application Server Network Deployment Cell Topology using Docker Containers](https://developer.ibm.com/recipes/tutorials/how-to-configure-ibm-websphere-application-server-network-deployment-cell-topology-using-docker-containers/)
+* [Configuring WebSphere Application Server Network Deployment Cell Topology using Docker Compose](https://developer.ibm.com/recipes/tutorials/configuring-websphere-application-server-network-deployment-cell-topology-using-docker-compose/)
+* [WebSphere full profile Installed in a Docker container](https://www.ibm.com/developerworks/community/blogs/devTips/entry/running_websphere_on_docker_container?lang=en)
 
 ## Amazon Web Services
 
