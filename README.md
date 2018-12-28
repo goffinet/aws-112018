@@ -161,8 +161,10 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 * [WebSphere Application Server V8.5.5 Technical Overview](http://www.redbooks.ibm.com/redpapers/pdfs/redp4855.pdf)
 * [WebSphere Application Server V8.5 Administration and Configuration Guide for the Full Profile](http://www.redbooks.ibm.com/redbooks/pdfs/sg248056.pdf)
+* [WebSphere Application Server V8.5 Concepts, Planning, and Design Guide](https://www.redbooks.ibm.com/redbooks/pdfs/sg248022.pdf)
 * [Introduction à Websphere Application Server](https://www.supinfo.com/articles/single/3240-introduction-websphere-application-server)
 * [IBM WebSphere Application Server (WAS) V9.0 Tutorial](https://mindmajix.com/ibm-was-tutorial)
+* [Configuring a web server and an application server profile on the same machine](https://www.ibm.com/support/knowledgecenter/en/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/tins_webplugins_local.html)
 * [ibmcom/websphere-traditional](https://hub.docker.com/r/ibmcom/websphere-traditional/)
 * [WASdev/ci.docker.websphere-traditional](https://github.com/WASdev/ci.docker.websphere-traditional)
 * [Modernizing Traditional Java Applications](https://training.play-with-docker.com/java-mta/)
