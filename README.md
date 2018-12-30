@@ -147,7 +147,13 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 ## DevOps
 
 * [Apprendre le déploiement continu avec des générateurs de site statique](https://ci-cd.goffinet.org/)
-* https://xebialabs.com/periodic-table-of-devops-tools/
+* [PERIODIC TABLE OF DEVOPS TOOLS (V3)](https://xebialabs.com/periodic-table-of-devops-tools/)
+* [The Three Ways: The Principles Underpinning DevOps](https://itrevolution.com/the-three-ways-principles-underpinning-devops/)
+* [Elements Of The First Way: And The DevOps Implications…](https://itrevolution.com/elements-of-the-first-way-and-the-devops-implications/)
+* [DevOps Culture (Part 1)](https://itrevolution.com/devops-culture-part-1/)
+* [DevOps Culture (Part 2)](https://itrevolution.com/devops-culture-part-2/)
+
+<iframe src='https://xebialabs.com/periodic-table-of-devops-tools/embed/' style='border:0px #FFFFFF none;' name='Periodic Table of DevOps' scrolling='no' frameborder='1' marginheight='0px' marginwidth='0px' height='625px' width='925px'></iframe>
 
 ## Administration de serveur Web Apache
 
