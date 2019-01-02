@@ -178,6 +178,7 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 * [How to configure IBM WebSphere Application Server Network Deployment Cell Topology using Docker Containers](https://developer.ibm.com/recipes/tutorials/how-to-configure-ibm-websphere-application-server-network-deployment-cell-topology-using-docker-containers/)
 * [Configuring WebSphere Application Server Network Deployment Cell Topology using Docker Compose](https://developer.ibm.com/recipes/tutorials/configuring-websphere-application-server-network-deployment-cell-topology-using-docker-compose/)
 * [WebSphere full profile Installed in a Docker container](https://www.ibm.com/developerworks/community/blogs/devTips/entry/running_websphere_on_docker_container?lang=en)
+* [50 Frequently Asked WebSphere Interview Questions and Answers](https://geekflare.com/websphere-interview-quetstions/)
 
 ## Amazon Web Services
 
