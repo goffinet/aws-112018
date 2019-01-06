@@ -180,6 +180,27 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 * [WebSphere full profile Installed in a Docker container](https://www.ibm.com/developerworks/community/blogs/devTips/entry/running_websphere_on_docker_container?lang=en)
 * [50 Frequently Asked WebSphere Interview Questions and Answers](https://geekflare.com/websphere-interview-quetstions/)
 
+## Programmation Python
+
+* [Apprendre à programmer en Python 2 et en Python 3](https://inforef.be/swi/python.htm)
+* [Programmation Python](https://fr.wikibooks.org/wiki/Programmation_Python)
+* [Apprendre le langage de programmation python](http://apprendre-python.com/)
+* [Digital Ocean Learn Python](https://www.digitalocean.com/community/tags/python?type=tutorials)
+* [Digital Ocean Programming Projects](https://www.digitalocean.com/community/tags/project/tutorials?page=1)
+
+### Projets Python
+
+1. Parler Geek, un simple calculateur
+* Algorithme de chiffrement Rot13 et Vigenère
+* "Scraper" et "Scrawler" des pages Web
+* Manipuler des API HTTP REST
+* Manipuler l'API de SLACK, de Github, de Gitlab
+* Comment créer un TwitterBot
+* Créer un Gitbook à partir d'un Jekyll
+* Mettre en graphe des fréquences de mot
+* Se connecter à une base de données
+* Manipuler S3 et EC2
+
 ## Amazon Web Services
 
 En travail. [Amazon Web Services](https://aws-dev.goffinet.org)
