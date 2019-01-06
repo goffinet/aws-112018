@@ -207,6 +207,6 @@ En préparation. [Amazon Web Services](https://aws-dev.goffinet.org)
 
 * https://templates.cloudonaut.io/en/stable/
 
-## Projet
+## Projet CI/CD sur AWS
 
 En préparation.
