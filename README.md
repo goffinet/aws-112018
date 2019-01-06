@@ -203,6 +203,10 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 ## Amazon Web Services
 
-En travail. [Amazon Web Services](https://aws-dev.goffinet.org)
+En préparation. [Amazon Web Services](https://aws-dev.goffinet.org)
 
 * https://templates.cloudonaut.io/en/stable/
+
+## Projet
+
+En préparation.
