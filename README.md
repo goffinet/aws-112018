@@ -190,6 +190,8 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 ### Projets Python
 
+**[https://gitlab.com/goffinet/projets-python](https://gitlab.com/goffinet/projets-python)**
+
 1. Parler Geek, un simple calculateur
 * Algorithme de chiffrement Rot13 et Vigenère
 * "Scraper" et "Scrawler" des pages Web
