@@ -188,23 +188,12 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 * [Apprendre le langage de programmation python](http://apprendre-python.com/)
 * [Python 3 Module of the Week](https://pymotw.com/3/index.html)
 * [Programming Python, 4th Edition, Mark Lutz](https://learning-python.com/about-pp4e.html)
+* [Python dans tous ses états]()
 * [Digital Ocean Learn Python](https://www.digitalocean.com/community/tags/python?type=tutorials)
 * [Digital Ocean Programming Projects](https://www.digitalocean.com/community/tags/project/tutorials?page=1)
 
-### Projets Python
-
 **[https://gitlab.com/goffinet/projets-python](https://gitlab.com/goffinet/projets-python)**
 
-1. Parler Geek, un simple calculateur
-* Algorithme de chiffrement Rot13 et Vigenère
-* "Scraper" et "Scrawler" des pages Web
-* Manipuler des API HTTP REST
-* Manipuler l'API de SLACK, de Github, de Gitlab
-* Comment créer un TwitterBot
-* Créer un Gitbook à partir d'un Jekyll
-* Mettre en graphe des fréquences de mot
-* Se connecter à une base de données
-* Manipuler S3 et EC2
 
 ## Amazon Web Services
 
