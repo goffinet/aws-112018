@@ -186,6 +186,8 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 * [Apprendre à programmer en Python 2 et en Python 3](https://inforef.be/swi/python.htm)
 * [Programmation Python](https://fr.wikibooks.org/wiki/Programmation_Python)
 * [Apprendre le langage de programmation python](http://apprendre-python.com/)
+* [Python 3 Module of the Week](https://pymotw.com/3/index.html)
+* [Programming Python, 4th Edition, Mark Lutz](https://learning-python.com/about-pp4e.html)
 * [Digital Ocean Learn Python](https://www.digitalocean.com/community/tags/python?type=tutorials)
 * [Digital Ocean Programming Projects](https://www.digitalocean.com/community/tags/project/tutorials?page=1)
 
