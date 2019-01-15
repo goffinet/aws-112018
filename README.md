@@ -195,12 +195,8 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 **[https://gitlab.com/goffinet/projets-python](https://gitlab.com/goffinet/projets-python)**
 
 
-## Amazon Web Services
+## Amazon Web Services et Projet
 
-En préparation. [Amazon Web Services](https://aws-dev.goffinet.org)
+**[Projet de publication en CI/CD sur AWS](https://gitbook-gitlab.aws-fr.com/)**
 
 * https://templates.cloudonaut.io/en/stable/
-
-## Projet CI/CD sur AWS
-
-En préparation.
