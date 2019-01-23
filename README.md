@@ -205,4 +205,4 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 **[Projet de publication en CI/CD sur AWS](https://gitbook-gitlab.aws-fr.com/)**
 
-* https://templates.cloudonaut.io/en/stable/
+* [https://templates.cloudonaut.io/en/stable/](https://templates.cloudonaut.io/en/stable/)
