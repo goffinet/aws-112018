@@ -17,6 +17,12 @@ François-Emmanuel Goffinet
 * https://github.com/goffinet/virt-scripts
 * vagarant, vagrant-libvirt, vagrant-mutate
 
+## DevOps Roadmap
+
+![DevOps Roadmap](https://github.com/kamranahmedse/developer-roadmap/raw/master/images/devops.png)
+
+Source : [https://github.com/kamranahmedse/developer-roadmap](https://github.com/kamranahmedse/developer-roadmap)
+
 ## Administration Linux : 1e partie
 
 ### [I. Administration système](https://linux.goffinet.org/00_administration_systeme/)
