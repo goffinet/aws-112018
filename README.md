@@ -206,3 +206,4 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 **[Projet de publication en CI/CD sur AWS](https://gitbook-gitlab.aws-fr.com/)**
 
 * [https://templates.cloudonaut.io/en/stable/](https://templates.cloudonaut.io/en/stable/)
+* [The Open Guide to Amazon Web Services](https://github.com/open-guides/og-aws)
