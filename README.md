@@ -172,20 +172,7 @@ Alternatives : Gitlab CI, Bitbucket, Travis CI
 
 ## Administration Websphere
 
-* [WebSphere Application Server V8.5.5 Technical Overview](http://www.redbooks.ibm.com/redpapers/pdfs/redp4855.pdf)
-* [WebSphere Application Server V8.5 Administration and Configuration Guide for the Full Profile](http://www.redbooks.ibm.com/redbooks/pdfs/sg248056.pdf)
-* [WebSphere Application Server V8.5 Concepts, Planning, and Design Guide](https://www.redbooks.ibm.com/redbooks/pdfs/sg248022.pdf)
-* [Introduction à Websphere Application Server](https://www.supinfo.com/articles/single/3240-introduction-websphere-application-server)
-* [IBM WebSphere Application Server (WAS) V9.0 Tutorial](https://mindmajix.com/ibm-was-tutorial)
-* [Configuring a web server and an application server profile on the same machine](https://www.ibm.com/support/knowledgecenter/en/SSAW57_8.5.5/com.ibm.websphere.nd.multiplatform.doc/ae/tins_webplugins_local.html)
-* [ibmcom/websphere-traditional](https://hub.docker.com/r/ibmcom/websphere-traditional/)
-* [WASdev/ci.docker.websphere-traditional](https://github.com/WASdev/ci.docker.websphere-traditional)
-* [Modernizing Traditional Java Applications](https://training.play-with-docker.com/java-mta/)
-* [Websphere Application Server V8.5.5.9 Network Deployment 2-Node Cluster on Docker](https://redheadhat.wordpress.com/2016/11/01/websphere-application-server-v8-5-5-9-network-deployment-2-node-cluster-on-docker/)
-* [How to configure IBM WebSphere Application Server Network Deployment Cell Topology using Docker Containers](https://developer.ibm.com/recipes/tutorials/how-to-configure-ibm-websphere-application-server-network-deployment-cell-topology-using-docker-containers/)
-* [Configuring WebSphere Application Server Network Deployment Cell Topology using Docker Compose](https://developer.ibm.com/recipes/tutorials/configuring-websphere-application-server-network-deployment-cell-topology-using-docker-compose/)
-* [WebSphere full profile Installed in a Docker container](https://www.ibm.com/developerworks/community/blogs/devTips/entry/running_websphere_on_docker_container?lang=en)
-* [50 Frequently Asked WebSphere Interview Questions and Answers](https://geekflare.com/websphere-interview-quetstions/)
+* **[Administration Websphere](https://websphere.goffinet.org/)**
 
 ## Programmation Python
 
