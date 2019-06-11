@@ -17,6 +17,10 @@ François-Emmanuel Goffinet
 * https://github.com/goffinet/virt-scripts
 * vagarant, vagrant-libvirt, vagrant-mutate
 
+## Les applications 12 facteurs
+
+[Les applications 12 facteurs](https://12factor.net/fr/)
+
 ## DevOps Roadmap
 
 ![DevOps Roadmap](https://github.com/kamranahmedse/developer-roadmap/raw/master/images/devops.png)
