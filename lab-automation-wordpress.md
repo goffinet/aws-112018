@@ -1276,12 +1276,17 @@ dbroot_password=$(openssl rand -base64 12)
 dbuser_password=$(openssl rand -base64 12)
 
 software_installation() {
-if [ -f /etc/fedora-release ] ; then
+if [ $(grep -q 'Fedora release 27' /etc/fedora-release; echo $?) == 0 ] ; then
 dnf -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json
 sed -i 's/^listen.acl_users/;listen.acl_users/g' /etc/php-fpm.d/www.conf
 elif [ -f /etc/centos-release ] ; then
+curl -L https://rpms.remirepo.net/enterprise/remi-release-7.rpm -o remi-release-7.rpm
+rpm -Uvh remi-release-7.rpm
+yum-config-manager --enable remi-php72
 yum -y install httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json firewalld
+echo "PHP Version: $(php -v)"
 elif [ -f /etc/lsb-release ] ; then
+ln -fs /usr/share/zoneinfo/Europe/Paris /etc/localtime
 apt-get update
 DEBIAN_FRONTEND=noninteractive DEBIAN_PRIORITY=critical \
 apt-get -q -y -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" upgrade
@@ -1430,24 +1435,24 @@ curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.pha
 chmod +x wp-cli.phar ; mv wp-cli.phar /usr/local/bin/wp
 
 # Check if wp-cli is working
-if [ $(wp --info > /dev/null ; echo $?) == '0' ] ; then
+if [ $(/usr/local/bin/wp --info > /dev/null ; echo $?) == '0' ] ; then
 echo "wp-cli is working" ; else
 echo "wp-cli is NOT working" ; fi
 }
 
 wordpress_installation() {
 # Download Wordpress
-wp core download --path=${application_path} --locale=fr_FR --allow-root
+/usr/local/bin/wp core download --path=${application_path} --locale=fr_FR --allow-root
 
 # Create wp-config.php
-wp config create --dbname=wp_database \
+/usr/local/bin/wp config create --dbname=wp_database \
 --dbuser=${dbuser} \
 --dbpass=${dbuser_password} \
 --path=${application_path} \
 --allow-root
 
 # Installation
-wp core install --url=${site_url} \
+/usr/local/bin/wp core install --url=${site_url} \
 --title="${site_title}" \
 --admin_user=${admin_user} \
 --admin_password=${admin_password} \
@@ -1456,7 +1461,7 @@ wp core install --url=${site_url} \
 --allow-root
 
 # Update plugins to their latest version
-wp plugin update --all --path=${application_path} --allow-root
+/usr/local/bin/wp plugin update --all --path=${application_path} --allow-root
 }
 
 print_end_message() {
