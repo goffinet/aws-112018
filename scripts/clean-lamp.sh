@@ -5,6 +5,7 @@ systemctl stop apache2 mysql
 systemctl disable httpd mariadb php-fpm
 systemctl disable apache2 mysql
 dnf -y remove mariadb mariadb-server httpd php-fpm
+yum -y remove httpd mariadb-server php php-common php-mysqlnd php-gd php-imap php-xml php-cli php-opcache php-mbstring php-json firewalld
 apt-get -y --purge remove apache2 php libapache2-mod-php mariadb-server php-mysql php-curl php-gd php-intl php-json php-mbstring php-xml php-zip
 apt-get -y --purge autoremove
 apt-get autoclean

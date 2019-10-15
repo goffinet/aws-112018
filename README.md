@@ -12,7 +12,7 @@ François-Emmanuel Goffinet
 * Installation Centos 7
 * `yum -y install epel-release ; yum -y upgrade`
 * Installtion de Atom.io : https://atom.io/
-* Installtion de chromium
+* Installation de chromium
 * Création d'un compte Github
 * https://github.com/goffinet/virt-scripts
 * vagarant, vagrant-libvirt, vagrant-mutate
