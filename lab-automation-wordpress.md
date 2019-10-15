@@ -1253,9 +1253,13 @@ services:
 
 ## 9. Approvisionnement Ansible
 
-Stack LAMP/wordpress à partir d'Ansible.
+Stack LAMP/wordpress à partir d'Ansible. A documenter.
 
-## 10. Script final
+## 10. Application Stateful Wordpress sur un cluster Kubernetes
+
+A documenter.
+
+## 11. Script final
 
 ```bash
 #!/bin/bash
